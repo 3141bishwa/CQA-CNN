@@ -4,12 +4,12 @@ This code follows up on a convolutional neural network architecture previously i
 
 Aliaksei Severyn and Alessandro Moschitti. *Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks*. SIGIR, 2015
 
-and the [github repo](https://github.com/aseveryn/deep-qa)
+The code following the paper is [available here.](https://github.com/aseveryn/deep-qa)
 
-The changes made to the model are as follows:
+Following changes are made to the model:
 1. The code now uses for a different dataset( Yahoo Answers). The dataset has been split to obtain the top five categories with the highest number of questions and these categories can be downloaded from [here](https://drive.google.com/open?id=0B1ttwhq718PdYlNMeC1hNmhyOWs). The dataset consists of 5 XML files, each related to a particular category as specified by the file name. Since this dataset consists of longer answers for each question, we consider question-answer pairs whose answer length are at a maximum of 150 words while loading the data for the CNN, as opposed to the paper, which has 50 words.
 
-2. Instead of computing the word overlap between question and an answer, we follow a more general approach, and compare the similarity score obtained from the Word2vec model between each word in the question with every word in the answer. Similarity scores greater than a certain threshold will be considered the same as word overlap. 
+2. Instead of computing the word overlap between question and an answer, we follow a more general approach, and compare the similarity score obtained from a Word2vec model between each word in the question with every word in the answer. Similarity scores greater than a certain threshold will be considered the same as word overlap. 
 
 3. Small changes have been made to the bash scripts.
 
@@ -29,17 +29,17 @@ The changes made to the model are as follows:
 
 The pre-initialized word2vec embeddings have to be downloaded from [here](https://drive.google.com/folderview?id=0B-yipfgecoSBfkZlY2FFWEpDR3M4Qkw5U055MWJrenE5MTBFVXlpRnd0QjZaMDQxejh1cWs&usp=sharing).
 
-For computing the similarity score, we use the [GoogleNews word2vec model](https://drive.google.com/file/d/0BzMkWccldefraXpFcW05cWd5Skk/view?usp=sharing) since this model has been more thoroughly trained and hence can find similarities more concretly.
+For computing the similarity score, we use the [GoogleNews word2vec model](https://drive.google.com/file/d/0BzMkWccldefraXpFcW05cWd5Skk/view?usp=sharing) since this model has been more thoroughly trained and hence can find similarities more accurately.
 
 
 # BUILD
-First download the dataset into your root folder directory. To split the XML file into separate train/test/dev file and to load data from these files run:
+First download the dataset into your root folder directory. To split the XML file of a specific category into separate train/test/dev file and to load data from these files run:
 
 `$ sh run_build_datasets.sh FOLDERNAME/FILENAME`
 
 where FOLDERNAME is the folder name of the recently downloaded XML files and FILENAME is the filename of the specific XML file that you want to run your CNN on.
 
-The script creates a folder named after your filename and adds a TRAIN/ folder inside it, which contains all your data for the ConvNet.
+The script creates a folder named after your filename and adds a TRAIN/ folder inside it, which contains all your data for the CNN.
 
 To train the model for a specific category, run
 
@@ -47,7 +47,10 @@ To train the model for a specific category, run
 
 where FOLDERNAME is the folder name of the recently downloaded XML files and CATEGORYNAME is the name of the category that you want to run your CNN on which contains a TRAIN folder inside it previously created from `run_build_datasets.sh`
 
-The results for the different categories are as follows
+The results for the different categories are as follows:
+
+
+Similarity Threshold = 0.8
 
 | Category              | MAP  | MRR   |
 |-----------------------|:---: |:-----:|
