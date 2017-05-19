@@ -4,7 +4,7 @@ This code follows up on a convolutional neural network architecture previously i
 
 Aliaksei Severyn and Alessandro Moschitti. *Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks*. SIGIR, 2015
 
-The code following the paper is [available here.](https://github.com/aseveryn/deep-qa)
+The code following their paper is [available here.](https://github.com/aseveryn/deep-qa)
 
 Following changes are made to the model:
 1. The code now uses for a different dataset( [Yahoo Answers](https://drive.google.com/file/d/0BzMkWccldefraVBZRlJjbS1XRHc/view?usp=sharing)). The dataset has been split to obtain the top five categories with the highest number of questions and these categories can be downloaded from [here](https://drive.google.com/open?id=0B1ttwhq718PdYlNMeC1hNmhyOWs). The dataset consists of 5 XML files, each related to a particular category as specified by the file name. Since this dataset consists of longer answers for each question, we consider question-answer pairs whose answer length are at a maximum of 150 words while loading the data for the CNN, as opposed to the paper, which has 50 words.
