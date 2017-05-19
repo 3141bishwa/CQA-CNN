@@ -35,17 +35,21 @@ For computing the similarity score, we use the [GoogleNews word2vec model](https
 # BUILD
 First download the dataset into your root folder directory. To split the XML file of a specific category into separate train/test/dev file and to load data from these files run:
 
-`$ sh run_build_datasets.sh FOLDERNAME/FILENAME`
+`$ sh run_build_datasets.sh $FOLDERNAME/$FILENAME`
 
 where FOLDERNAME is the folder name of the recently downloaded XML files and FILENAME is the filename of the specific XML file that you want to run your CNN on.
+
+Example: `$ sh run_build_datasets.sh dataset/Health.xml`
 
 The script creates a folder named after your filename and adds a TRAIN/ folder inside it, which contains all your data for the CNN.
 
 To train the model for a specific category, run
 
-`python run_nnet.py FOLDERNAME/CATEGORYNAME/TRAIN`
+`python run_nnet.py $FOLDERNAME/$CATEGORYNAME/TRAIN`
 
 where FOLDERNAME is the folder name of the recently downloaded XML files and CATEGORYNAME is the name of the category that you want to run your CNN on which contains a TRAIN folder inside it previously created from `run_build_datasets.sh`
+
+Example: `python run_nnet.py dataset/Health/TRAIN`
 
 The results for the different categories are as follows:
 
